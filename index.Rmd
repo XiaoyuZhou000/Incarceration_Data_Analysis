@@ -1,0 +1,103 @@
+---
+title: "A3: Incarceration"
+output: html_document
+---
+
+### Introduction
+
+The issue of racial discrimination in the course of law enforcement
+is often discussed. So I use the ratio of the population of the White
+people in jail (white_jail_pop) to all the White people
+(white_pop_15to64) and the ratio of the population of the Black
+people in jail (black_jail_pop) to all the Black people
+(black_pop_15to64) to analyze whether there is a racial
+discrimination happened in law enforcement.
+
+### Summary Information
+
+```{r, echo=TRUE, message = FALSE, warning = FALSE}
+source("https://raw.githubusercontent.com/info-201b-wi22/a3-incarceration-XiaoyuZhou000/main/summary.R?token=GHSAT0AAAAAABR6YVNLLT7W5XFODKWJZCDAYRCZ7IA")
+max_rate <- max(data_year_clean$incarceration_rate_year)*100
+min_rate <- min(data_year_clean$incarceration_rate_year)*100
+num_black_rate <- as.numeric(black_rate)*100
+num_white_rate <- as.numeric(white_rate)*100
+max_diff_state <- max(data_difference$rate_diff_mean)*100
+```
+
+In 2018, the average incarceration rate of races was 0.381%, the
+annual highest rate in the country from 1970 to 2018. In 1971, the
+average incarceration rate of races was 0.063%, the annual lowest 
+rate in the country from 1970 to 2018. The average incarceration rate
+of the Black people from 1970 to 2018 is 4.273%. The average
+incarceration rate of the White people from 1970 to 2018 is 0.304%.
+The UT has the highest difference of the incarceration rate of the
+White and the Black, which is 33.612%.
+
+### The Dataset
+
+Who collected the data?  
+ This work employed two Bureau of Justice Statistics (BJS) data
+ collections: the Census of Jails (COJ), which covers all jails and
+ is conducted every five to eight years since 1970, and the Annual
+ Survey of Jails (ASJ), which covers about one-third of jails—and
+ includes nearly all of the largest jails—that has been conducted in
+ non-census years since 1982. This project was funded by the Robert
+ W. Wilson Charitable Trust.
+
+How was the data collected or generated? 
+ This dataset was assembled using information collected by the U.S.
+ Department of Justice Bureau of Justice Statistics (BJS)
+
+Why was the data collected? 
+ To explore the fairness of law enforcement
+ 
+How many observations (rows) are in your data? 
+ 153811
+
+How many features (columns) are in the data?  
+ 121
+
+What, if any, ethical questions or questions of power do you need to consider when working with this data?  
+ Whether the differences in educational attainment among each race
+ also affect the disparities in incarceration rates among each race,
+ not only the discrimination.
+
+What are possible limitations or problems with this data?   (at least 200 words)
+ First of all, the integrity of the data was so huge that I had to
+ constantly remove NA values when calculating the ratio. With such a
+ large data loss, it's hard to make our final results reliable. The
+ Code Book also documents a large number of data losses. Secondly,
+ the purpose of my investigation is to analyze whether there is
+ racial discrimination in law enforcement by comparing the different
+ incarceration rates of white and black people. But we don't know
+ what the educational rates are for different races. Education also
+ has an effect on incarceration rates. So this data does not provide
+ hard evidence for us to analyze whether racial discrimination
+ exists.
+
+### Trends Over Time Chart
+
+```{r, echo=FALSE, message = FALSE, warning = FALSE}
+chart1
+```
+
+This chart is showing the trend of the US annual average incarceration rate of the White people and the Black people from 1970-2018. The trend of the incarceration rate of the White people is slowly increasing. The difference of the rate of White and the Black is overall declining.
+
+### Variable Comparison Chart
+
+```{r, echo=FALSE, message = FALSE, warning = FALSE}
+
+chart2
+```
+
+This chart compare the average incarceration rate of White people and Black people from 1970-2018. The average incarceration of the White is one-tenth of the average incarceration of the Black.
+
+### Map
+
+```{r, echo=FALSE, message = FALSE, warning = FALSE}
+
+map
+```
+
+This map summarizes the differences between the White and Black incarceration rates in different states. UT has the highest difference obviously.
+
